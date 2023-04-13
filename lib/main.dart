@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'aluno.dart';
-import 'aluno_detalhe.dart';
+import 'pais.dart';
+import 'pais_detalhe.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
       // Application theme data, you can set the colors for the application as
       // you want
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.green,
       ),
       // A widget which will be started on application startup
-      home: MyHomePage(title: 'Kukuri Wiki'),
+      home: MyHomePage(title: 'Copa do Mundo - Wiki'),
     );
   }
 }
@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
   final String title;
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  Widget buildAlunoCard(Aluno aluno) {
+  Widget buildAlunoCard(Pais pais) {
     return Card(
       elevation: 2.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -34,15 +34,15 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            Image.network(aluno.urlImage),
+            Image.network(pais.urlImage),
             Text(
-              aluno.nome,
+              pais.nome,
               style: TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'Palatino'),
             ),
-            Text(aluno.descricao,
+            Text(pais.descricao,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontSize: 15.0,
@@ -63,7 +63,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: ListView.builder(
-          itemCount: Aluno.exemplos.length,
+          itemCount: Pais.exemplos.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
                 onTap: () {
@@ -71,13 +71,13 @@ class MyHomePage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return AlunoDetalhe(aluno: Aluno.exemplos[index]);
+                        return PaisDetalhe(pais: Pais.exemplos[index]);
                         //return Text("Detalhes aluno");
                       },
                     ),
                   );
                 },
-                child: buildAlunoCard(Aluno.exemplos[index]));
+                child: buildAlunoCard(Pais.exemplos[index]));
             //return Text(Aluno.exemplos[index].nome);
           },
         ),

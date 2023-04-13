@@ -1,12 +1,12 @@
 import "package:flutter/material.dart";
-import "aluno.dart";
+import "pais.dart";
 
-class AlunoDetalhe extends StatefulWidget {
-  final Aluno aluno;
+class PaisDetalhe extends StatefulWidget {
+  final Pais pais;
 
-  const AlunoDetalhe({
+  const PaisDetalhe({
     Key? key,
-    required this.aluno,
+    required this.pais,
   }) : super(key: key);
 
   @override
@@ -15,12 +15,12 @@ class AlunoDetalhe extends StatefulWidget {
   }
 }
 
-class _AlunoDetalheState extends State<AlunoDetalhe> {
+class _AlunoDetalheState extends State<PaisDetalhe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.aluno.nome),
+        title: Text(widget.pais.nome),
       ),
       body: SafeArea(
         child: Column(
@@ -28,20 +28,20 @@ class _AlunoDetalheState extends State<AlunoDetalhe> {
             SizedBox(
               height: 300,
               width: double.infinity,
-              child: Image(image: AssetImage(widget.aluno.urlImage)),
+              child: Image(image: NetworkImage(widget.pais.urlImage)),
             ),
-            Text(widget.aluno.descricao),
+            Text(widget.pais.descricao),
             Expanded(
                 child: ListView.builder(
                     padding: const EdgeInsets.all(7.0),
-                    itemCount: widget.aluno.diciplinas.length,
+                    itemCount: widget.pais.diciplinas.length,
                     itemBuilder: (BuildContext context, int index) {
-                      final diciplina = widget.aluno.diciplinas[index];
+                      final diciplina = widget.pais.diciplinas[index];
                       return Text(
-                          'Diciplina: ${diciplina.nome}\nNota: ${diciplina.nota}',
+                          'Pais: ${diciplina.pais}\nQuantidade de Titulos: ${diciplina.titulo}',
                           style: TextStyle(
                               fontWeight: FontWeight.normal,
-                              fontSize: 10,
+                              fontSize: 13,
                               fontFamily: ''));
                     }))
           ],
